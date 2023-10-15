@@ -25,7 +25,7 @@ const question = (text) => new Promise((resolve) => rl.question(text, resolve))
   async function qr() {
 //------------------------------------------------------
 let { version, isLatest } = await fetchLatestBaileysVersion()
-const {  state, saveCreds } =await useMultiFileAuthState(./sessions)
+const {  state, saveCreds } =await useMultiFileAuthState(`./sessions`)
     const msgRetryCounterCache = new NodeCache() // for retry message, "waiting message"
     const XeonBotInc = makeWASocket({
         logger: pino({ level: 'silent' }),
@@ -59,18 +59,18 @@ const {  state, saveCreds } =await useMultiFileAuthState(./sessions)
          phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            console.log(chalk.bgBlack(chalk.redBright("Start with country code of your WhatsApp Number, Example : +94786802371")))
+            console.log(chalk.bgBlack(chalk.redBright("❄ꜱᴛᴀʀᴛ ᴡɪᴛʜ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ ᴏꜰ ʏᴏᴜʀ ᴡʜᴀᴛꜱᴀᴘᴘ ɴᴜᴍʙᴇʀ❄(ᴇxᴀᴍᴘʟᴇ)= +94774041805 ")))
             process.exit(0)
          }
       } else {
-         phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFor example: +94786802371 : `)))
+         phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`💝PLEASE TYPE YOUR WHATSAPP NUMBER 💝\nFOR EXAMPLE🩷 = +94774071805  : `)))
          phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
          // Ask again when entering the wrong number
          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
-            console.log(chalk.bgBlack(chalk.redBright("Start with country code of your WhatsApp Number, Example : +94786802371")))
+            console.log(chalk.bgBlack(chalk.redBright("❄ꜱᴛᴀʀᴛ ᴡɪᴛʜ ᴄᴏᴜɴᴛʀʏ ᴄᴏᴅᴇ ᴏꜰ ʏᴏᴜʀ ᴡʜᴀᴛꜱᴀᴘᴘ ɴᴜᴍʙᴇʀ❄(ᴇxᴀᴍᴘʟᴇ)= +94774041805 ")))
 
-            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`Please type your WhatsApp number 😍\nFor example: +94786802371 : `)))
+            phoneNumber = await question(chalk.bgBlack(chalk.greenBright(`💝PLEASE TYPE YOUR WHATSAPP NUMBER 💝\nFOR EXAMPLE🩷 = +94774071805  :`)))
             phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
             rl.close()
          }
@@ -91,23 +91,30 @@ const {  state, saveCreds } =await useMultiFileAuthState(./sessions)
             let sessionXeon = fs.readFileSync('./sessions/creds.json');
             await delay(1000 * 2) 
 
-      
+
            await delay(800)
-          const output = await axios.post('http://paste.c-net.org/',${btoa(sessionXeon)}, {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }});
+          const output = await axios.post('http://paste.c-net.org/',`${btoa(sessionXeon)}`, {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }});
           let c = output.data.split('/')[3]
            await XeonBotInc.sendMessage(XeonBotInc.user.id, {text: 'DarkNero;;;'+c});	
           let cc = `⚠⃟⃪⃬⃖⛩ᴅᴏ ɴᴏᴛ ꜱʜᴀʀᴇ ᴛʜɪꜱ ᴄᴏᴅᴇ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ ᴘʟᴇᴀꜱᴇ ᴅᴏɴᴛ ꜱʜᴀʀᴇ.⛩⃟⃪⃬⃖⚠
-_____________
-
-ᴛʜᴀɴᴋꜱ⍣ꜰʀᴏᴍ⍤ᴜꜱɪɴɢ⍤ᴏᴜʀ⍤ʙᴏᴛ⍣ꜱᴇʀᴠɪᴄᴇ
-_____________
-
-ʏᴏᴜʀ Qʀ ꜱᴄᴀɴɴᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ
-_____________
-©ᴅᴀʀᴋ ɴᴇʀᴏ ᴠ9`
+          _____________
+          
+          🎀ᴛʜᴀɴᴋꜱ ꜰʀᴏᴍ ᴜꜱɪɴɢ ᴏᴜʀ ᴘᴜʙʟɪᴄ ʙᴏᴛ ꜱᴇʀᴠɪᴄᴇ🎀
+          _____________
+          
+          ʏᴏᴜʀ Qʀ ꜱᴄᴀɴɴᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ✅
+          _____________
+          
+          💝ᴅᴀʀᴋ ɴᴇʀᴏ ᴠ9 ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ .ᴘʟᴇᴀꜱᴇ ᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ᴅᴀʀᴋ ɴᴇʀᴏ ᴜᴘᴅᴀᴛᴇ ᴅᴇᴛᴀɪʟꜱ💝=https://chat.whatsapp.com/K7i6DvdR8u34WCFuASM26a
+          _____________
+          
+          ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴄʏʙᴇʀ ʏᴀᴋᴜᴢᴀ ᴛᴇᴀᴍ💎
+          _____________
+          ©ᴅᴀʀᴋ ɴᴇʀᴏ ᴠ9🎀
+          `
           await XeonBotInc.sendMessage(XeonBotInc.user.id, {text: cc});
 
-        
+
               await delay(1000 * 2) 
               process.exit(0)
         }
